@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 const Header = () => {
     const navItems = (
         <>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/">Blog</Link>
-            </li>
-            <li>
-                <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-                <Link to="/">Dashboard</Link>
-            </li>
+            {/* Always Display */}
+            <li className="font-semibold"><Link to="/">Home</Link></li>
+            <li className="font-semibold"><Link to="/myportfolio">My Portfolio</Link></li>
+            <li className="font-semibold"><Link to="/blog">Blog</Link></li>
+            
+            {/* Logged In Display */}
+            <li className="font-semibold"><Link to="/purchase">Purchase</Link></li>
+            <li className="font-semibold"><Link to="/dashboard">Dashboard</Link></li>
+            
+            {/* Logged Out Display */}
+            <li className="font-semibold"><Link to="/login">Login</Link></li>
+            <li className="font-semibold"><Link to="/register">Register</Link></li>
         </>
     );
     return (
