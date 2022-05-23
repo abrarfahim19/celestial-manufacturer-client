@@ -1,6 +1,7 @@
 import './App.css';
+import { ToastContainer } from 'react-toastify';
 import Header from './Components/Pages/Shareable/Header';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Pages/Home/Home';
 import NotFound from './Components/Pages/Shareable/NotFound';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
@@ -17,6 +18,7 @@ import AddProduct from './Components/Pages/Dashboard/AddProduct';
 import ManageProduct from './Components/Pages/Dashboard/ManageProduct';
 import MakeAdmin from './Components/Pages/Dashboard/MakeAdmin';
 import RequireAuth from './Components/Pages/Shareable/RequireAuth';
+import RequireAdmin from './Components/Pages/Shareable/RequireAdmin';
 
 function App() {
   return (
@@ -27,12 +29,12 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/dashboard' element={<RequireAuth> <Dashboard/></RequireAuth>}>
             <Route index element={<MyProfile></MyProfile>}>My Profile</Route>
-            <Route path='/dashboard/myorder' element={<MyOrder></MyOrder>}>My Orders</Route>
-            <Route path='/dashboard/addreview' element={<AddReview></AddReview>}>Add A Review</Route>
-            <Route path='/dashboard/manageorder' element={<ManageOrder></ManageOrder>}>Manage All Orders</Route>
-            <Route path='/dashboard/addproduct' element={<AddProduct></AddProduct>}>Add A Product</Route>
-            <Route path='/dashboard/manageproduct' element={<ManageProduct></ManageProduct>}>Manage Products</Route>
-            <Route path='/dashboard/makeadmin' element={<MakeAdmin></MakeAdmin>}>Make Admin</Route>
+            <Route path='/dashboard/myorder' element={<MyOrder/>}>My Orders</Route>
+            <Route path='/dashboard/addreview' element={<AddReview/>}>Add A Review</Route>
+            <Route path='/dashboard/manageorder' element={<RequireAdmin><ManageOrder/></RequireAdmin>}>Manage All Orders</Route>
+            <Route path='/dashboard/addproduct' element={<RequireAdmin><AddProduct/></RequireAdmin>}>Add A Product</Route>
+            <Route path='/dashboard/manageproduct' element={<ManageProduct/>}>Manage Products</Route>
+            <Route path='/dashboard/makeadmin' element={<RequireAdmin><MakeAdmin/></RequireAdmin>}>Make Admin</Route>
         </Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
@@ -41,6 +43,7 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer/>
     </>
   );
 }
