@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const logout = () => {
+        signOut(auth);
+    };
+
+    if(user){
+        console.log(user);
+    }
+
     const navItems = (
         <>
             {/* Always Display */}
@@ -9,13 +21,55 @@ const Header = () => {
             <li className="font-semibold"><Link to="/myportfolio">My Portfolio</Link></li>
             <li className="font-semibold"><Link to="/blog">Blog</Link></li>
             
-            {/* Logged In Display */}
-            <li className="font-semibold"><Link to="/purchase">Purchase</Link></li>
-            <li className="font-semibold"><Link to="/dashboard">Dashboard</Link></li>
+            {
+                user ?
+                <>
+                    {/* Logged In Display */}
+                    <li className="font-semibold"><Link to="/dashboard">Dashboard</Link></li>
+                    {/* For Non-Admin */}
+                    <li className="font-semibold"><Link to="/purchase">Purchase</Link></li>
+                </>
+                :
+                <>
+                    {/* Logged Out Display */}
+                    <li className="font-semibold"><Link to="/login">Login</Link></li>
+                    <li className="font-semibold"><Link to="/register">Register</Link></li>
+                </>
+            }
             
-            {/* Logged Out Display */}
-            <li className="font-semibold"><Link to="/login">Login</Link></li>
-            <li className="font-semibold"><Link to="/register">Register</Link></li>
+        </>
+    );
+    const avatarIcon =(
+        <>
+            {
+                user &&
+                <div class="">
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full">
+                                <img src="https://api.lorem.space/image/face?hash=33791" />
+                            </div>
+                        </label>
+                        <ul
+                            tabindex="0"
+                            class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                        >
+                            <li>
+                                <a class="justify-between">
+                                    Profile
+                                    <span class="badge">New</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>Settings</a>
+                            </li>
+                            <li>
+                                <button onClick={logout} class="btn btn-outline">{user.displayName} (Log Out)</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
         </>
     );
     return (
@@ -45,36 +99,13 @@ const Header = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link to='/' class="btn btn-ghost font-bold normal-case text-xl">Celestial Manufacturer</Link>
             </div>
             <div class="navbar-end ">
                 <ul class="menu hidden lg:flex menu-horizontal p-0">{navItems}</ul>
-            <div class="">
-                <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img src="https://api.lorem.space/image/face?hash=33791" />
-                        </div>
-                    </label>
-                    <ul
-                        tabindex="0"
-                        class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                    >
-                        <li>
-                            <a class="justify-between">
-                                Profile
-                                <span class="badge">New</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>Settings</a>
-                        </li>
-                        <li>
-                            <a>Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            {
+                avatarIcon
+            }
             </div>
         </div>
     );

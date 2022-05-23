@@ -23,9 +23,9 @@ const Dashboard = () => {
                 {/* <!-- Page content here --> */}
                 <label
                     for="my-drawer-2"
-                    class="btn btn-primary drawer-button lg:hidden"
+                    class="flex object-top justify-center btn drawer-button lg:hidden"
                 >
-                    Open drawer
+                    Open Dashboard...<i class="fa-solid fa-angles-right text-3xl text-white"></i>
                 </label>
                 <h2 className="text-2xl">This is Dashboard</h2>
                 <Outlet></Outlet>
