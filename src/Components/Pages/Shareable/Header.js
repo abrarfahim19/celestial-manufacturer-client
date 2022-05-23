@@ -6,8 +6,10 @@ import { signOut } from "firebase/auth";
 
 const Header = () => {
     const [user] = useAuthState(auth);
+    //Logout + Remove Token
     const logout = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     };
 
     if(user){

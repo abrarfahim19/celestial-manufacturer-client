@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import auth from "../../../firebase.init";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Loading from "../Shareable/Loading";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import useTokens from "../../../Hooks/useTokens";
 
 const Login = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [signInWithEmailAndPassword,eUser,eLoading,eError,] = useSignInWithEmailAndPassword(auth);
-    
+    const [tokens] = useTokens(gUser || eUser);
+
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     let navigate = useNavigate();
@@ -17,15 +19,14 @@ const Login = () => {
         register,
         handleSubmit,
         resetField,
-        watch,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = async (data,e) => {
-        await console.log(data.email);
-        await signInWithEmailAndPassword(data.email, data.password);
-        resetField("password");
-    };
+    useEffect( () =>{
+        if (tokens) {
+            navigate(from, { replace: true });
+        }
+    }, [tokens, from, navigate])
 
     if (gLoading||eLoading){
         return <Loading></Loading>
@@ -36,9 +37,11 @@ const Login = () => {
         errorM =<p className="text-red-600 mt-3">{gError?.message || eError?.message}</p>
     };
 
-    if (gUser||eUser){
-        navigate(from, { replace: true });
-    }
+    const onSubmit = async (data,e) => {
+        e.preventDefault();
+        await signInWithEmailAndPassword(data.email, data.password);
+        resetField("password");
+    };
 
     return (
         <div class="hero min-h-screen bg-[url('https://images.unsplash.com/photo-1648987656847-c902fe5f14bc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070')]">
