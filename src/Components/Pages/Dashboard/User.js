@@ -1,7 +1,27 @@
 import React from "react";
+import { toast } from 'react-toastify';
 
-const User = ({user}) => {
-    const {name,email,company,jobRole,image,location} = user;
+const User = ({user,refetch}) => {
+    const {name,email,company,jobRole,image,location,role} = user;
+    const makeAdmin = () => {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => {
+            if(res.status === 403){
+                toast.error('System Error');
+            }
+            return res.json()})
+        .then(data => {
+            if (data.modifiedCount > 0) {
+                refetch();
+                toast.success(`Successfully made ${email} admin`);
+            }
+        })
+    }
     return (
         <tr>
             <td>
@@ -29,7 +49,7 @@ const User = ({user}) => {
             </td>
             <td>{email ? `${email}`:'N/A'}</td>
             <th>
-                <button class="btn btn-ghost btn-xs">Make Admin</button>
+                {role==='admin'? <button onClick={()=> {toast('Already An Admin')}} class="btn btn-sm btn-success">Admin</button>:<button onClick={makeAdmin} class="btn btn-sm bg-blue-500 text-black border-0">Make Admin</button>}
             </th>
         </tr>
     );

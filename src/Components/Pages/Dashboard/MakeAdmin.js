@@ -4,11 +4,7 @@ import Loading from "../Shareable/Loading";
 import User from "./User";
 
 const MakeAdmin = () => {
-    const {
-        data: users,
-        isLoading,
-        refetch,
-    } = useQuery("users", () =>
+    const {data: users,isLoading,refetch,} = useQuery("users", () =>
         fetch("http://localhost:5000/user", {
             method: "GET",
             headers: {

@@ -19,6 +19,7 @@ import ManageProduct from './Components/Pages/Dashboard/ManageProduct';
 import MakeAdmin from './Components/Pages/Dashboard/MakeAdmin';
 import RequireAuth from './Components/Pages/Shareable/RequireAuth';
 import RequireAdmin from './Components/Pages/Shareable/RequireAdmin';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

@@ -27,7 +27,6 @@ const Dashboard = () => {
                 >
                     Open Dashboard...<i class="fa-solid fa-angles-right text-3xl text-white"></i>
                 </label>
-                <h2 className="text-2xl">This is Dashboard</h2>
                 <Outlet></Outlet>
             </div>
             <div class="drawer-side">

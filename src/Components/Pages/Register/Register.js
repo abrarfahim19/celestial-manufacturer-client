@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useTokens from "../../../Hooks/useTokens";
+import Loading from '../Shareable/Loading';
+
 
 const Register = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -26,7 +28,10 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    
+    if(loading || gLoading){
+        return <Loading></Loading>
+    }
+
     if (tokens){
         navigate('/home');
     }
@@ -43,7 +48,6 @@ const Register = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName })
         resetField("password");
-        
     };
 
     return (
