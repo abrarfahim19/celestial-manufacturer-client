@@ -1,9 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
-    const apiKey = "6b66c6b98712999f8b6bbde17344eff2";
-
     const {
         register,
         handleSubmit,
@@ -11,10 +10,51 @@ const AddProduct = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = async (data) => {
-        console.log(data);
-        console.log();
+    
+    const onSubmit = async data => {
+        console.log(process.env.REACT_APP_imageApiKey);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imageApiKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res=>res.json())
+        .then(result =>{
+            if(result.success){
+                const img = result.data.url;
+                const product = {
+                    name: data.name,
+                    price: data.price,
+                    minQ: data.minQ,
+                    stock: data.stock,
+                    img: img
+                }
+                // send to your database 
+                fetch('http://localhost:5000/product', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(product)
+                })
+                .then(res =>res.json())
+                .then(inserted =>{
+                    if(inserted.insertedId){
+                        toast.success('Product HAs been Added')
+                        reset();
+                    }
+                    else{
+                        toast.error('Product Add failed...');
+                    };
+                })
+            }       
+        })
     };
+
 
     return (
         <>

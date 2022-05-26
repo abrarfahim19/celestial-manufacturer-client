@@ -20,6 +20,7 @@ const Header = () => {
         <>
             {/* Always Display */}
             <li className="font-semibold"><Link to="/">Home</Link></li>
+            <li className="font-semibold"><Link to="/product">Products</Link></li>
             <li className="font-semibold"><Link to="/myportfolio">My Portfolio</Link></li>
             <li className="font-semibold"><Link to="/blog">Blog</Link></li>
             
@@ -28,8 +29,6 @@ const Header = () => {
                 <>
                     {/* Logged In Display */}
                     <li className="font-semibold"><Link to="/dashboard">Dashboard</Link></li>
-                    {/* For Non-Admin */}
-                    <li className="font-semibold"><Link to="/purchase">Purchase</Link></li>
                 </>
                 :
                 <>

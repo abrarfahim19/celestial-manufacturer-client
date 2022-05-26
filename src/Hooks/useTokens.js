@@ -4,7 +4,8 @@ const useTokens = user =>{
     const [tokens, setTokens] = useState('');
     useEffect( () =>{
         const email = user?.user?.email;
-        const currentUser = {email: email};
+        const userName = user?.user?.displayName;
+        const currentUser = {email: email,userName:userName};
         if(email){
             fetch(`http://localhost:5000/user/${email}`, {
                 method:'PUT',

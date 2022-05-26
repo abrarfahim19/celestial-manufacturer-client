@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from 'react-toastify';
 
 const User = ({user,refetch}) => {
-    const {name,email,company,jobRole,image,location,role} = user;
+    const {userName,email,company,jobRole,image,location,role} = user;
     const makeAdmin = () => {
         fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
@@ -35,7 +35,7 @@ const User = ({user,refetch}) => {
                         </div>
                     </div>
                     <div>
-                        <div class="font-bold">{name? `${name}`:'N/A'}</div>
+                        <div class="font-bold">{userName? `${userName}`:'N/A'}</div>
                         <div class="text-sm opacity-50">{location ? `${location}`:'N/A'}</div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const User = ({user,refetch}) => {
             </td>
             <td>{email ? `${email}`:'N/A'}</td>
             <th>
-                {role==='admin'? <button onClick={()=> {toast('Already An Admin')}} class="btn btn-sm btn-success">Admin</button>:<button onClick={makeAdmin} class="btn btn-sm bg-blue-500 text-black border-0">Make Admin</button>}
+                {role==='admin'? <button onClick={()=> {toast('Already An Admin')}} class="btn btn-sm btn-success">Admin</button>:<button onClick={makeAdmin} class="btn btn-sm bg-blue-500 text-white border-0">Make Admin</button>}
             </th>
         </tr>
     );

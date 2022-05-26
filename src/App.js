@@ -7,7 +7,7 @@ import NotFound from './Components/Pages/Shareable/NotFound';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import Blog from './Components/Pages/Blog/Blog';
 import MyPortfolio from './Components/Pages/MyPortfolio/MyPortfolio';
-import Purchase from './Components/Pages/Purchase/Purchase';
+import Product from './Components/Pages/Product/Product';
 import Login from './Components/Pages/Login/Login';
 import Register from './Components/Pages/Register/Register';
 import MyProfile from './Components/Pages/Dashboard/MyProfile';
@@ -20,6 +20,7 @@ import MakeAdmin from './Components/Pages/Dashboard/MakeAdmin';
 import RequireAuth from './Components/Pages/Shareable/RequireAuth';
 import RequireAdmin from './Components/Pages/Shareable/RequireAdmin';
 import 'react-toastify/dist/ReactToastify.css';
+import ProductPage from './Components/Pages/Product/ProductPage';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/product' element={<Product/>}></Route>
+        <Route path='/product/:productId' element={<ProductPage/>}></Route>
         <Route path='/dashboard' element={<RequireAuth> <Dashboard/></RequireAuth>}>
             <Route index element={<MyProfile></MyProfile>}>My Profile</Route>
             <Route path='/dashboard/myorder' element={<MyOrder/>}>My Orders</Route>
@@ -39,7 +42,6 @@ function App() {
         </Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/myportfolio' element={<MyPortfolio></MyPortfolio>}></Route>
-        <Route path='/purchase' element={<RequireAuth><Purchase/></RequireAuth>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
