@@ -28,7 +28,7 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    if(loading || gLoading){
+    if(loading || gLoading || updating){
         return <Loading></Loading>
     }
 
