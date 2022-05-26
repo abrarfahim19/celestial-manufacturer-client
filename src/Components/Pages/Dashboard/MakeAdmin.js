@@ -17,7 +17,7 @@ const MakeAdmin = () => {
     }
     return (
         <div>
-            <h2 className="text-2xl">All Users: {users.length}</h2>
+            <h2 className="text-2xl">All Users: {users?.length}</h2>
             <div class="overflow-x-auto w-full">
                 <table class="table table-zebra w-full">
                     {/* <!-- head --> */}
@@ -32,7 +32,7 @@ const MakeAdmin = () => {
                     <tbody>
                         {/* <!-- row 1 --> */}
                         {
-                           users.map(user=><User
+                           users?.map(user=><User
                            key={user._id}
                            user={user}
                            refetch={refetch}

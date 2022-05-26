@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useQuery } from "react-query";
+import auth from "../../../firebase.init";
+import Loading from "../Shareable/Loading";
 
 const MyProfile = () => {
-    // const [edit, setEdit] = useState(false);
+    const [edit,setEdit] = useState(false);
+    const [user] = useAuthState(auth);
+    const email = user?.email;
     const {
         register,
         handleSubmit,
@@ -10,20 +16,49 @@ const MyProfile = () => {
         formState: { errors },
     } = useForm();
 
+    const {data: useDetail,isLoading,refetch} = useQuery(["details", email], () =>
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: "GET",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        }).then((res) => res.json())
+    );
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
+
     const onSubmit = async (data) => {
         console.log(data);
-        console.log();
-    };
+        const update = {
+            userName:data.userName,
+            company:data.company,
+            jobRole:data.jobRole,
+            location:data.location,
+            description:data.description
+        };
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(update),
+        })
+        .then((res) => res.json())
+        .then(result => console.log(result))
+    }
 
     return (
         <>
-            <div class="m-5 lg:mx-32 avatar">
-                <div class="w-32 rounded">
-                    <img
-                        src="https://api.lorem.space/image/face?hash=88560"
-                        alt="avatar"
-                    />
+            <div class="m-5 lg:mx-32 avatar placeholder">
+                <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
+                    <span class="text-3xl">{useDetail.userName ? useDetail.userName[0] : "User"}</span>
                 </div>
+                <button onClick={()=> setEdit(!edit)} class="btn btn-sm btn-primary text-white gap-2">
+                    Edit
+                    <i class="fa-solid fa-user-pen"></i>
+                </button>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mx-5 lg:mx-32 grid grid-cols-2">
@@ -35,8 +70,10 @@ const MyProfile = () => {
                                 </span>
                             </label>
                             <input
-                                {...register("name", { required: true})}
+                                {...register("userName", { required: true})}
                                 type="text"
+                                disabled={!edit}
+                                defaultValue={`${useDetail.userName}`}
                                 placeholder="Your Name"
                                 class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
@@ -50,8 +87,10 @@ const MyProfile = () => {
                             <input
                                 {...register("description", { required: true})}
                                 type="text"
+                                disabled={!edit}
+                                defaultValue={`${useDetail?.description}`}
                                 placeholder="Bio"
-                                class="input input-primary h-32 font-semibold text-lg input-bordered w-full max-w-xs"
+                                class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
                         </div>
                     </div>
@@ -65,6 +104,8 @@ const MyProfile = () => {
                             <input
                                 {...register("company", { required: true})}
                                 type="text"
+                                disabled={!edit}
+                                defaultValue={`${useDetail?.company}`}
                                 placeholder="Your Company Name"
                                 class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
@@ -78,6 +119,8 @@ const MyProfile = () => {
                             <input
                                 {...register("jobRole", { required: true})}
                                 type="text"
+                                disabled={!edit}
+                                defaultValue={`${useDetail?.jobRole}`}
                                 placeholder="Your Role"
                                 class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
@@ -91,6 +134,8 @@ const MyProfile = () => {
                             <input
                                {...register("location", { required: true})}
                                type="text"
+                               disabled={!edit}
+                               defaultValue={`${useDetail?.location}`}
                                placeholder="Your Location"
                                 class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />

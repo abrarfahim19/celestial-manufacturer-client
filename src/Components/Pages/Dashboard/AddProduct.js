@@ -58,13 +58,8 @@ const AddProduct = () => {
 
     return (
         <>
-            <div class="m-5 lg:mx-32 avatar">
-                <div class="w-32 rounded">
-                    <img
-                        src="https://api.lorem.space/image/face?hash=88560"
-                        alt="avatar"
-                    />
-                </div>
+            <div>
+                <h1 className="text-center text-primary text-2xl font-bold mt-5 mb-5">Add a Product</h1>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mx-5 lg:mx-32 grid grid-cols-2">
@@ -174,7 +169,7 @@ const AddProduct = () => {
                     <input
                         type="submit"
                         className="btn btn-primary text-white"
-                        value="Update Profile"
+                        value="Add Product"
                     />
                 </div>
             </form>
