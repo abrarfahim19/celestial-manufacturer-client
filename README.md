@@ -23,5 +23,6 @@ So I made a mockup site from their given requirement. It includes some challangi
 
 ### Color Combination
 For Warmth look the primary and secondary color was choosed in Blue sky gradient.
+
 Primary Color: `#1d2671`
 Secondary Color: `#c4e0e5`
