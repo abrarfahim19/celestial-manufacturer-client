@@ -43,7 +43,7 @@ const PostReview = ({ refetch }) => {
     <div className="flex">
       <div className="avatar placeholder col-span-1">
         <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-        <span class="text-3xl">{user?.displayName.slice(0,2) || "User"}</span>
+        <span className="text-3xl">{user?.displayName.slice(0,2) || "User"}</span>
         </div>
       </div>
 

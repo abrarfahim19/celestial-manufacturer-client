@@ -14,7 +14,7 @@ const UserOrder = ({order,refetch,setPaydata}) => {
                 <td>{status}</td>
                 <td>{status==="pending" && 
                 <>
-                    <label htmlFor="pay-modal" onClick={()=> setPaydata(order)} class="btn btn-xs">Pay</label>
+                    <label htmlFor="pay-modal" onClick={()=> setPaydata(order)} className="btn btn-xs">Pay</label>
                 </>
                 }</td>
             </tr>

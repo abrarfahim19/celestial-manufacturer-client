@@ -64,7 +64,7 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mx-5 lg:mx-32 grid grid-cols-2">
                     <div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text font-semibold">
                                     Name
@@ -83,7 +83,7 @@ const AddProduct = () => {
                                 </span>
                             </label>
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                         <label className="label">
                                 <span className="label-text font-semibold">
                                     Product Price
@@ -102,7 +102,7 @@ const AddProduct = () => {
                                 </span>
                             </label>
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                         <label className="label">
                                 <span className="label-text font-semibold">
                                     Product Image
@@ -123,7 +123,7 @@ const AddProduct = () => {
                         </div>
                     </div>
                     <div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                         <label className="label">
                                 <span className="label-text font-semibold">
                                     Minimum Purchase Number
@@ -142,7 +142,7 @@ const AddProduct = () => {
                                 </span>
                             </label>
                         </div>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                         <label className="label">
                                 <span className="label-text font-semibold">
                                     Supply Number

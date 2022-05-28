@@ -57,21 +57,21 @@ const MyProfile = () => {
 
     return (
         <>
-            <div class="m-5 lg:mx-32 avatar placeholder">
-                <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-                    <span class="text-3xl">{useDetail.userName ? useDetail.userName.slice(0,2) : "User"}</span>
+            <div className="m-5 lg:mx-32 avatar placeholder">
+                <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
+                    <span className="text-3xl">{useDetail.userName ? useDetail.userName.slice(0,2) : "User"}</span>
                 </div>
-                <button onClick={()=> setEdit(!edit)} class="btn btn-sm btn-primary text-white gap-2">
+                <button onClick={()=> setEdit(!edit)} className="btn btn-sm btn-primary text-white gap-2">
                     Edit
-                    <i class="fa-solid fa-user-pen"></i>
+                    <i className="fa-solid fa-user-pen"></i>
                 </button>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mx-5 lg:mx-32 grid grid-cols-2">
                     <div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text font-semibold">
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text font-semibold">
                                     Name
                                 </span>
                             </label>
@@ -81,12 +81,12 @@ const MyProfile = () => {
                                 disabled={!edit}
                                 defaultValue={`${useDetail.userName}`}
                                 placeholder="Your Name"
-                                class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
+                                className="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text font-semibold">
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text font-semibold">
                                     Description
                                 </span>
                             </label>
@@ -96,14 +96,14 @@ const MyProfile = () => {
                                 disabled={!edit}
                                 defaultValue={`${useDetail?.description}`}
                                 placeholder="Bio"
-                                class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
+                                className="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
                         </div>
                     </div>
                     <div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text font-semibold">
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text font-semibold">
                                     Company
                                 </span>
                             </label>
@@ -113,12 +113,12 @@ const MyProfile = () => {
                                 disabled={!edit}
                                 defaultValue={`${useDetail?.company}`}
                                 placeholder="Your Company Name"
-                                class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
+                                className="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text font-semibold">
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text font-semibold">
                                     Job Role
                                 </span>
                             </label>
@@ -128,12 +128,12 @@ const MyProfile = () => {
                                 disabled={!edit}
                                 defaultValue={`${useDetail?.jobRole}`}
                                 placeholder="Your Role"
-                                class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
+                                className="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                            <label class="label">
-                                <span class="label-text font-semibold">
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text font-semibold">
                                     Location
                                 </span>
                             </label>
@@ -143,7 +143,7 @@ const MyProfile = () => {
                                disabled={!edit}
                                defaultValue={`${useDetail?.location}`}
                                placeholder="Your Location"
-                                class="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
+                                className="input input-primary font-semibold text-lg input-bordered w-full max-w-xs"
                             />
                         </div>
                     </div>

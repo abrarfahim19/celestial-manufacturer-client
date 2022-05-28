@@ -44,19 +44,19 @@ const Login = () => {
     };
 
     return (
-        <div class="hero min-h-screen bg-[url('https://images.unsplash.com/photo-1648987656847-c902fe5f14bc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070')]">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <div class="text-center lg:text-left mx-5">
-                    <h1 class="text-5xl font-bold text-white">Boost Your Business With Us</h1>
-                    <p class="py-6 text-white">
+        <div className="hero min-h-screen bg-[url('https://images.unsplash.com/photo-1648987656847-c902fe5f14bc?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070')]">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left mx-5">
+                    <h1 className="text-5xl font-bold text-white">Boost Your Business With Us</h1>
+                    <p className="py-6 text-white">
                         We have served our product to 10k+ happy customer. We go the extra mile.
                     </p>
-                    <h1 class="text-3xl font-bold text-white">Don't Have An Accout?</h1>
-                    <p class="py-6">
+                    <h1 className="text-3xl font-bold text-white">Don't Have An Accout?</h1>
+                    <p className="py-6">
                     <Link className="btn glass btn-wide text-white mt-3" to='/register'> Register </Link>
                     </p>
                 </div>
-                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <div className="card-body ">
                     <h2 className="text-xl text-center font-bold">Log In</h2>
 

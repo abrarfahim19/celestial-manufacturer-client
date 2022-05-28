@@ -48,12 +48,12 @@ const AdminOrder = ({order,refetch}) => {
                 <td>{status}</td>
                 <td>{status==="paid" && 
                 <>
-                    <button onClick={()=>makeShipment(_id)} class="btn btn-xs">Ship</button>
+                    <button onClick={()=>makeShipment(_id)} className="btn btn-xs">Ship</button>
                 </>
                 }
                 {status==="pending" && 
                 <>
-                    <button onClick={()=>deleteOrder(_id)} class="btn btn-xs">Delete</button>
+                    <button onClick={()=>deleteOrder(_id)} className="btn btn-xs">Delete</button>
                 </>
                 }
                 </td>

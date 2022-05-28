@@ -25,28 +25,28 @@ const User = ({user,refetch}) => {
     return (
         <tr>
             <td>
-                <div class="flex items-center space-x-3">
-                    <div class="avatar placeholder">
-                        <div class="mask mask-squircle bg-slate-400 w-12 h-12">
+                <div className="flex items-center space-x-3">
+                    <div className="avatar placeholder">
+                        <div className="mask mask-squircle bg-slate-400 w-12 h-12">
                             <span className="text-semibold">{userName?userName.slice(0,2):"user"}</span>
                         </div>
                     </div>
                     <div>
-                        <div class="font-bold">{userName? `${userName}`:'N/A'}</div>
-                        <div class="text-sm opacity-50">{location ? `${location}`:'N/A'}</div>
+                        <div className="font-bold">{userName? `${userName}`:'N/A'}</div>
+                        <div className="text-sm opacity-50">{location ? `${location}`:'N/A'}</div>
                     </div>
                 </div>
             </td>
             <td>
                 {company ? `${company}`:'N/A'}
                 <br />
-                <span class="badge badge-ghost badge-sm">
+                <span className="badge badge-ghost badge-sm">
                     {jobRole ? `${jobRole}`:'N/A'}
                 </span>
             </td>
             <td>{email ? `${email}`:'N/A'}</td>
             <th>
-                {role==='admin'? <button onClick={()=> {toast('Already An Admin')}} class="btn btn-sm btn-success">Admin</button>:<button onClick={makeAdmin} class="btn btn-sm bg-blue-500 text-white border-0">Make Admin</button>}
+                {role==='admin'? <button onClick={()=> {toast('Already An Admin')}} className="btn btn-sm btn-success">Admin</button>:<button onClick={makeAdmin} className="btn btn-sm bg-blue-500 text-white border-0">Make Admin</button>}
             </th>
         </tr>
     );

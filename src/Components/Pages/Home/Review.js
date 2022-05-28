@@ -7,7 +7,7 @@ const Review = ({review}) => {
                 <div className="flex justify-center">
                     <div className="avatar placeholder col-span-1">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-                            <span class="text-3xl">
+                            <span className="text-3xl">
                                 {review?.name.slice(0,2) || "User"}
                             </span>
                         </div>

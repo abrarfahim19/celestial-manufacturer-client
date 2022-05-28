@@ -17,9 +17,9 @@ const MakeAdmin = () => {
     }
     return (
         <div>
-            <h2 className="text-2xl">All Users: {users?.length}</h2>
-            <div class="overflow-x-auto w-full">
-                <table class="table table-zebra w-full">
+            <h2 className="text-2xl text-center my-5">All Users: {users?.length}</h2>
+            <div className="overflow-x-auto w-full">
+                <table className="table table-zebra w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>

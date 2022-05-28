@@ -20,7 +20,7 @@ const SetUpMeeting = () => {
         const meeting = {date:formattedDate};
         
         if(user){
-            fetch('http://localhost:5000/meeting', {
+            fetch('https://celestial123.herokuapp.com/meeting', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -46,9 +46,9 @@ const SetUpMeeting = () => {
                     <p className="text-primary text-center m-10 text-3xl text-bold">
                         SetUp Meeting for {format(date, "PP")}
                     </p>
-                    <button onClick={()=>getMeeting(date)} class="self-center btn btn-primary gap-2">
+                    <button onClick={()=>getMeeting(date)} className="self-center btn btn-primary gap-2">
                         Button
-                        <i class="fa-solid fa-comment-dots"></i>
+                        <i className="fa-solid fa-comment-dots"></i>
                     </button>
                 </div>
                 <div className="mr-20">

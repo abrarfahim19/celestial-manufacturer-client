@@ -99,17 +99,17 @@ const PaymentCard = ({ payData, refetch }) => {
 
     return (
         <>
-            <input type="checkbox" id="pay-modal" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box relative">
+            <input type="checkbox" id="pay-modal" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box relative">
                     {payLoading && (
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
                         <Loading />
                         </div>
                       )}
-                    <h3 class="font-bold text-lg mt-2">Payment For {name}</h3>
+                    <h3 className="font-bold text-lg mt-2">Payment For {name}</h3>
                     <h2 className="mt-3">User {email},</h2>
-                    <p class="mt-2">
+                    <p className="mt-2">
                         You have to pay {toPay}$ for the {qunatity} pcs of{" "}
                         {name}
                     </p>
@@ -145,8 +145,8 @@ const PaymentCard = ({ payData, refetch }) => {
                             </span>
                         </form>
                     </div>
-                    <div class="modal-action">
-                        <label ref={closeRef} for="pay-modal" class="btn">
+                    <div className="modal-action">
+                        <label ref={closeRef} for="pay-modal" className="btn">
                             Close
                         </label>
                     </div>

@@ -99,11 +99,11 @@ const ProductPage = () => {
                 </h2>
                 <div className="grid grid-cols-2">
                     <div>
-                        <figure class="px-10 w-3/4 pt-10">
+                        <figure className="px-10 w-3/4 pt-10">
                             <img
                                 src={detail?.img}
                                 alt="product"
-                                class="rounded-xl"
+                                className="rounded-xl"
                             />
                         </figure>
                     </div>
@@ -124,7 +124,7 @@ const ProductPage = () => {
                             {" "}
                             Product In Stock: {detail?.stock}
                         </h3>
-                        <div class="form-control w-full max-w-xs">
+                        <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text font-semibold">
                                     Order
@@ -153,9 +153,9 @@ const ProductPage = () => {
                         </div>
                         <button
                             type="submit"
-                            class="btn text-white btn-primary gap-2"
+                            className="btn text-white btn-primary gap-2"
                         >
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i className="fa-solid fa-cart-shopping"></i>
                             Order
                         </button>
                     </div>

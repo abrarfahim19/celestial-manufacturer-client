@@ -8,8 +8,8 @@ const Footer = () => {
             <footer className="bg-slate-300 p-5 bottom-0 w-full">
                 <div>
                     <p className="text-center text-2xl text-blue-500">
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-brands fa-facebook"></i>
+                        <i className="fa-brands fa-twitter"></i>
+                        <i className="fa-brands fa-facebook"></i>
 
                     </p>
                 </div>

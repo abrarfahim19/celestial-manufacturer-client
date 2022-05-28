@@ -22,8 +22,8 @@ const AdminProductRow = ({product, refetch}) => {
     return (
         <tr>
                 <td>
-                <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                             <img
                                 src={img?`${img}`:"https://api.lorem.space/image/face?hash=33791"}
                                 alt="product"
@@ -36,7 +36,7 @@ const AdminProductRow = ({product, refetch}) => {
                 <td>{minQ}</td>
                 <td>{stock}</td>
                 <td> 
-                <button onClick={()=>deleteOrder(_id)} class="btn btn-xs">Delete</button>
+                <button onClick={()=>deleteOrder(_id)} className="btn btn-xs">Delete</button>
                 </td>
             </tr>
     );

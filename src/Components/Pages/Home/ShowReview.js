@@ -22,7 +22,7 @@ const ShowReview = () => {
     return (
         <div>
             {
-                reviews.slice(0,3).map(review => <Review review={review}></Review>)
+                reviews.slice(0,3).map(review => <Review key={review._id} review={review}></Review>)
             }
             {
                 user && <PostReview refetch={refetch}></PostReview>
