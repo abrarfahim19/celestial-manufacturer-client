@@ -9,7 +9,7 @@ const Products = () => {
         .then(data=>setProducts(data))
     },[])
     return (
-        <div>
+        <div className='mt-5'>
             <h2 className='text-center font-semibold text-2xl'>Number Of Products: <span className='text-primary'>{products.length}</span></h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
