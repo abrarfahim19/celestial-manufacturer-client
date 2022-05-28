@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from './Carousel'
+import NewestTools from './NewestTools';
 import Products from './Products';
 import SetUpMeeting from './SetUpMeeting';
 import ShowReview from './ShowReview';
@@ -10,6 +11,7 @@ const Home = () => {
             <Carousel></Carousel>
             <Products></Products>
             <SetUpMeeting></SetUpMeeting>
+            <NewestTools></NewestTools>
             <Stat></Stat>
             <ShowReview></ShowReview>
         </div>
