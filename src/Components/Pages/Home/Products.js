@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 const Products = () => {
     const [products, setProducts] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/product')
+        fetch('https://celestial123.herokuapp.com/product')
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
@@ -13,9 +13,11 @@ const Products = () => {
             {
                 products.length
             }
-            {
-                products.map(product =><ProductCard product={product} key={product._id}></ProductCard>)
-            }   
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+                    {
+                        products.map(product =><ProductCard product={product} key={product._id}></ProductCard>)
+                    }   
+            </div>
         </div>
     );
 };

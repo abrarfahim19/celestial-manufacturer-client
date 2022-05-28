@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../Shareable/Loading";
 
@@ -17,7 +18,7 @@ const MyProfile = () => {
     } = useForm();
 
     const {data: useDetail,isLoading,refetch} = useQuery(["details", email], () =>
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://celestial123.herokuapp.com/user/${email}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -38,7 +39,7 @@ const MyProfile = () => {
             location:data.location,
             description:data.description
         };
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://celestial123.herokuapp.com/user/${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -46,7 +47,12 @@ const MyProfile = () => {
             body: JSON.stringify(update),
         })
         .then((res) => res.json())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result)
+            if(result.success ==="true"){
+                toast('Update Successful')
+            }
+        })
     }
 
     return (
@@ -70,7 +76,7 @@ const MyProfile = () => {
                                 </span>
                             </label>
                             <input
-                                {...register("userName", { required: true})}
+                                {...register("userName")}
                                 type="text"
                                 disabled={!edit}
                                 defaultValue={`${useDetail.userName}`}
@@ -85,7 +91,7 @@ const MyProfile = () => {
                                 </span>
                             </label>
                             <input
-                                {...register("description", { required: true})}
+                                {...register("description")}
                                 type="text"
                                 disabled={!edit}
                                 defaultValue={`${useDetail?.description}`}
@@ -102,7 +108,7 @@ const MyProfile = () => {
                                 </span>
                             </label>
                             <input
-                                {...register("company", { required: true})}
+                                {...register("company")}
                                 type="text"
                                 disabled={!edit}
                                 defaultValue={`${useDetail?.company}`}
@@ -117,7 +123,7 @@ const MyProfile = () => {
                                 </span>
                             </label>
                             <input
-                                {...register("jobRole", { required: true})}
+                                {...register("jobRole")}
                                 type="text"
                                 disabled={!edit}
                                 defaultValue={`${useDetail?.jobRole}`}
@@ -132,7 +138,7 @@ const MyProfile = () => {
                                 </span>
                             </label>
                             <input
-                               {...register("location", { required: true})}
+                               {...register("location")}
                                type="text"
                                disabled={!edit}
                                defaultValue={`${useDetail?.location}`}

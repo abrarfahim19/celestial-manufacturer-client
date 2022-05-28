@@ -21,6 +21,7 @@ import RequireAuth from './Components/Pages/Shareable/RequireAuth';
 import RequireAdmin from './Components/Pages/Shareable/RequireAdmin';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductPage from './Components/Pages/Product/ProductPage';
+import Footer from './Components/Pages/Shareable/Footer';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <ToastContainer/>
+      <Footer></Footer>
     </>
   );
 }

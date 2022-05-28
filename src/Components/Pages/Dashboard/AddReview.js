@@ -1,79 +1,121 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
-const AddReview = () => {
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm();
 
-    const onSubmit = async (data) => {
-        console.log(data);
-        console.log();
-    };
-    const name = "";
-    return (
-        <div>
-            <h2>Add Review</h2>
-            <div class="avatar placeholder">
-                <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-                    <span class="text-3xl">{name ? name[0] : "User"}</span>
-                </div>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="form-control w-full max-w-xs">
-                    <div class="rating">
-                        <input
-                            type="radio"
-                            name="rating-2"
-                            class="mask mask-star-2 bg-orange-400"
-                        />
-                        <input
-                            type="radio"
-                            name="rating-2"
-                            class="mask mask-star-2 bg-orange-400"
-                        />
-                        <input
-                            type="radio"
-                            name="rating-2"
-                            class="mask mask-star-2 bg-orange-400"
-                        />
-                        <input
-                            type="radio"
-                            name="rating-2"
-                            class="mask mask-star-2 bg-orange-400"
-                        />
-                        <input
-                            type="radio"
-                            name="rating-2"
-                            class="mask mask-star-2 bg-orange-400"
-                        />
-                    </div>
-                    <label class="label">
-                        <span class="label-text font-semibold">Review</span>
-                    </label>
-                    <input
-                        {...register("review", { required: true })}
-                        type="text"
-                        rows="4"
-                        cols="50"
-                        placeholder="Your Review"
-                        class="input input-primary font-semibold text-lg input-bordered w-full  max-w-xs"
-                    />
-                </div>
+const PostReview = ({ refetch }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const [user] = useAuthState(auth);
+  const onSubmit = (data) => {
+    data.name = user?.displayName;
+    data.email = user?.email;
+    fetch("http://localhost:5000/review", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: localStorage.getItem("accessToken"),
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((d) => {
+          console.log(d)
+          if (d.insertedId) {
+            toast.success("Thanks for review");
+            refetch();
+            reset();
+            reset();
+          }
+      });
+  };
 
-                <div className="m-5 lg:mx-32 avatar">
-                    <input
-                        type="submit"
-                        className="btn btn-primary text-white"
-                        value="Add Reviw"
-                    />
-                </div>
-            </form>
+  return (
+      <div className="m-32">
+    <div className="flex">
+      <div className="avatar placeholder col-span-1">
+        <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
+        <span class="text-3xl">{user?.displayName[0] || "User"}</span>
         </div>
-    );
+      </div>
+
+      <div className="w-full ml-4">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <textarea
+            
+            placeholder="Write A Review..."
+            className={
+              errors.comment
+                ? "textarea  w-full textarea-error m-2 resize-x"
+                : "textarea  w-full textarea-bordered m-2 resize-x"
+            }
+            {...register("comment", { required: true })}
+          ></textarea>
+          <div className="flex justify-between">
+            <div className="rating">
+              <input
+                
+                type="radio"
+                className="mask mask-star"
+                value="1"
+                {...register("rating", { required: true })}
+              />
+              <input
+                
+                type="radio"
+                className="mask mask-star"
+                value="2"
+                {...register("rating", { required: true })}
+              />
+              <input
+                
+                type="radio"
+                className="mask mask-star"
+                value="3"
+                {...register("rating", { required: true })}
+              />
+              <input
+                
+                type="radio"
+                className="mask mask-star"
+                value="4"
+                {...register("rating", { required: true })}
+              />
+              <input
+                
+                type="radio"
+                className="mask mask-star"
+                value="5"
+                {...register("rating", { required: true })}
+              />
+
+              {errors.rating && (
+                <span className=" text-warning">( rating is required )</span>
+              )}
+            </div>
+            <div>
+              <button
+                
+                type="submit"
+                className="btn btn-sm"
+              >
+                post
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  );
 };
 
-export default AddReview;
+export default PostReview;

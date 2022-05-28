@@ -9,7 +9,9 @@ const ProductCard = ({ product }) => {
         console.log(id);
     };
     return (
-        <div class="card w-96 bg-base-100 shadow-xl">
+        <div className="justify-self-center">
+
+        <div class="card h-full w-96 bg-base-100 shadow-xl">
             <figure class="px-10 pt-10">
                 <img
                     src={img}
@@ -25,6 +27,7 @@ const ProductCard = ({ product }) => {
                     <button onClick={() => navigateToProductDetail(_id)} class="btn btn-primary text-white">Purchase</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

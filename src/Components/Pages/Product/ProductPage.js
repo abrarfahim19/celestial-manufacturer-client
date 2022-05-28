@@ -19,7 +19,7 @@ const ProductPage = () => {
 
     // Get the Item Detail
     // useEffect(()=>{
-    //     fetch(`http://localhost:5000/product/${productId}`)
+    //     fetch(`https://celestial123.herokuapp.com/product/${productId}`)
     //     .then(res=> res.json())
     //     .then(data => setDetails(data))
     // },[productId])
@@ -33,7 +33,7 @@ const ProductPage = () => {
         isLoading,
         refetch,
     } = useQuery(["details", productId], () =>
-        fetch(`http://localhost:5000/product/${productId}`, {
+        fetch(`https://celestial123.herokuapp.com/product/${productId}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -50,7 +50,7 @@ const ProductPage = () => {
         const ordered = data.order;
         const stock = parseInt(detail.stock) - parseInt(ordered);
         const update = { stock: stock };
-        fetch(`http://localhost:5000/product/${productId}`, {
+        fetch(`https://celestial123.herokuapp.com/product/${productId}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",
@@ -66,8 +66,9 @@ const ProductPage = () => {
                     email:user.email,
                     qunatity: ordered,
                     toPay: ordered * parseInt(detail.price),
+                    status:"pending"
                 };
-                fetch("http://localhost:5000/order", {
+                fetch("https://celestial123.herokuapp.com/order", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -155,7 +156,7 @@ const ProductPage = () => {
                             class="btn text-white btn-primary gap-2"
                         >
                             <i class="fa-solid fa-cart-shopping"></i>
-                            Button
+                            Order
                         </button>
                     </div>
                 </div>
