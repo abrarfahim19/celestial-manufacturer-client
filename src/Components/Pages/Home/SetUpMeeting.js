@@ -3,8 +3,11 @@ import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 const SetUpMeeting = () => {
+    const [user] = useAuthState(auth);
     const [date, setDate] = useState(new Date());
     const today = new Date();
     const formattedDate = format(date, 'PP');
@@ -15,19 +18,25 @@ const SetUpMeeting = () => {
     
       const getMeeting = () =>{
         const meeting = {date:formattedDate};
-        fetch('http://localhost:5000/meeting', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(meeting)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                toast(`Meeting is set at, ${formattedDate}`)
-            }
-        })
+        
+        if(user){
+            fetch('http://localhost:5000/meeting', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(meeting)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success){
+                    toast(`Meeting is set at, ${formattedDate} Our Admin will Get back to You through Mail`)
+                }
+            })
+        }
+        else{
+            toast.error('Please SignIn First')
+        }
     }
     return (
         <div className="my-5">

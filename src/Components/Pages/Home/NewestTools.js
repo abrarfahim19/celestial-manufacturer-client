@@ -17,13 +17,13 @@ const NewestTools = () => {
                 <div className="flex justify-center mx-auto">
                     <div className="avatar col-span-1">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-                            <img src={sorted[0].img} alt="" />
+                            <img src={sorted[0]?.img} alt="" />
                         </div>
                     </div>
                     <div className="w-full ml-4">
-                        <h1 className="text-primary text-2xl font-semibold">Get Out Newest Product {sorted[0].name}</h1>
-                        <h1 className="text-3xl">Left only <span className="text-indigo-500"> {sorted[0].stock} </span>pieces</h1>
-                        <h1 className="text-xl">Grab your deal Now! For Just <span className="text-green-600"> {sorted[0].price}$</span></h1>
+                        <h1 className="text-primary text-2xl font-semibold">Get Out Newest Product {sorted[0]?.name}</h1>
+                        <h1 className="text-3xl">Left only <span className="text-indigo-500"> {sorted[0]?.stock} </span>pieces</h1>
+                        <h1 className="text-xl">Grab your deal Now! For Just <span className="text-green-600"> {sorted[0]?.price}$</span></h1>
                     </div>
                 </div>
             </div>
@@ -31,13 +31,13 @@ const NewestTools = () => {
                 <div className="flex justify-center mx-auto">
                     <div className="avatar col-span-1">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-                            <img src={sorted[1].img} alt="" />
+                            <img src={sorted[1]?.img} alt="" />
                         </div>
                     </div>
                     <div className="w-full ml-4">
-                        <h1 className="text-primary text-2xl font-semibold">Get Out Newest Product {sorted[1].name}</h1>
-                        <h1 className="text-3xl">Left only <span className="text-indigo-500"> {sorted[1].stock} </span>pieces</h1>
-                        <h1 className="text-xl">Grab your deal Now! For Just <span className="text-green-600"> {sorted[1].price}$</span></h1>
+                        <h1 className="text-primary text-2xl font-semibold">Get Out Newest Product {sorted[1]?.name}</h1>
+                        <h1 className="text-3xl">Left only <span className="text-indigo-500"> {sorted[1]?.stock} </span>pieces</h1>
+                        <h1 className="text-xl">Grab your deal Now! For Just <span className="text-green-600"> {sorted[1]?.price}$</span></h1>
                     </div>
                 </div>
             </div>
@@ -45,13 +45,13 @@ const NewestTools = () => {
                 <div className="flex justify-center mx-auto">
                     <div className="avatar col-span-1">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-                            <img src={sorted[2].img} alt="" />
+                            <img src={sorted[2]?.img} alt="" />
                         </div>
                     </div>
                     <div className="w-full ml-4">
-                        <h1 className="text-primary text-2xl font-semibold">Get Out Newest Product {sorted[2].name}</h1>
-                        <h1 className="text-3xl">Left only <span className="text-indigo-500"> {sorted[2].stock} </span>pieces</h1>
-                        <h1 className="text-xl">Grab your deal Now! For Just <span className="text-green-600"> {sorted[2].price}$</span></h1>
+                        <h1 className="text-primary text-2xl font-semibold">Get Out Newest Product {sorted[2]?.name}</h1>
+                        <h1 className="text-3xl">Left only <span className="text-indigo-500"> {sorted[2]?.stock} </span>pieces</h1>
+                        <h1 className="text-xl">Grab your deal Now! For Just <span className="text-green-600"> {sorted[2]?.price}$</span></h1>
                     </div>
                 </div>
             </div>
