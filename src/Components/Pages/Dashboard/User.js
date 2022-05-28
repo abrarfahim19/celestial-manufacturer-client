@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from 'react-toastify';
 
 const User = ({user,refetch}) => {
-    const {userName,email,company,jobRole,image,location,role} = user;
+    const {userName,email,company,jobRole,location,role} = user;
     const makeAdmin = () => {
         fetch(`https://celestial123.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
@@ -26,12 +26,9 @@ const User = ({user,refetch}) => {
         <tr>
             <td>
                 <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
-                            <img
-                                src={image?`${image}`:"https://api.lorem.space/image/face?hash=33791"}
-                                alt="Avatar Tailwind CSS Component"
-                            />
+                    <div class="avatar placeholder">
+                        <div class="mask mask-squircle bg-slate-400 w-12 h-12">
+                            <span className="text-semibold">{userName?userName.slice(0,2):"user"}</span>
                         </div>
                     </div>
                     <div>

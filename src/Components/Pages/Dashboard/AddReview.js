@@ -18,7 +18,7 @@ const PostReview = ({ refetch }) => {
   const onSubmit = (data) => {
     data.name = user?.displayName;
     data.email = user?.email;
-    fetch("http://localhost:5000/review", {
+    fetch("https://celestial123.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -43,7 +43,7 @@ const PostReview = ({ refetch }) => {
     <div className="flex">
       <div className="avatar placeholder col-span-1">
         <div className="bg-neutral-focus text-neutral-content rounded-full w-24 h-24">
-        <span class="text-3xl">{user?.displayName[0] || "User"}</span>
+        <span class="text-3xl">{user?.displayName.slice(0,2) || "User"}</span>
         </div>
       </div>
 
@@ -98,7 +98,7 @@ const PostReview = ({ refetch }) => {
               />
 
               {errors.rating && (
-                <span className=" text-warning">( rating is required )</span>
+                <span className=" text-blue-500">( rating is required! )</span>
               )}
             </div>
             <div>

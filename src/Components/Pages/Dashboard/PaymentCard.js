@@ -18,7 +18,7 @@ const PaymentCard = ({ payData, refetch }) => {
     useEffect(() => {
         if (toPay) {
             fetch(
-                "http://localhost:5000/create-payment-intent",
+                "https://celestial123.herokuapp.com/create-payment-intent",
                 {
                     method: "POST",
                     headers: {
@@ -76,7 +76,7 @@ const PaymentCard = ({ payData, refetch }) => {
             setCardError("");
             const update = { status: "paid", transationId: paymentIntent.id };
             console.log(update);
-            await fetch(`http://localhost:5000/shipment/${_id}`, {
+            await fetch(`https://celestial123.herokuapp.com/shipment/${_id}`, {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json',

@@ -23,7 +23,7 @@ const MyPortfolio = () => {
                    <ol>
                        <li className="mx-10">Web Scrping With Scrapy: <span className="text-primary"> <a href="https://github.com/abrarfahim19/Web_Scraping">Explore the power of Scrapy</a></span> </li>
                        <li className="mx-10">Scrapping Linked In Profile With Beautiful Soup: <span className="text-primary"> <a href="https://www.youtube.com/watch?v=dJgOm0E81P8">Project Youtube LInk</a></span> </li>
-                       <li className="mx-10">Data Science Team Site: <span className="text-primary"> <a href="https://atoshi.solutions">Explore the power of Scrapy</a></span></li>
+                       <li className="mx-10">Data Science Team Site: <span className="text-primary"> <a href="https://atoshi.solutions">Atoshi</a></span></li>
                    </ol>
                 </p>
 

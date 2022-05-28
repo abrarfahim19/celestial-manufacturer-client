@@ -9,7 +9,7 @@ import Review from './Review';
 const ShowReview = () => {
     const [user] = useAuthState(auth);
     const {data: reviews,isLoading,refetch,} = useQuery("reviews", () =>
-        fetch("http://localhost:5000/review", {
+        fetch("https://celestial123.herokuapp.com/review", {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -22,7 +22,7 @@ const ShowReview = () => {
     return (
         <div>
             {
-                reviews.map(review => <Review review={review}></Review>)
+                reviews.slice(0,3).map(review => <Review review={review}></Review>)
             }
             {
                 user && <PostReview refetch={refetch}></PostReview>

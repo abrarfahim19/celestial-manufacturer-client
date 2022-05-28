@@ -59,7 +59,7 @@ const MyProfile = () => {
         <>
             <div class="m-5 lg:mx-32 avatar placeholder">
                 <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-                    <span class="text-3xl">{useDetail.userName ? useDetail.userName[0] : "User"}</span>
+                    <span class="text-3xl">{useDetail.userName ? useDetail.userName.slice(0,2) : "User"}</span>
                 </div>
                 <button onClick={()=> setEdit(!edit)} class="btn btn-sm btn-primary text-white gap-2">
                     Edit
